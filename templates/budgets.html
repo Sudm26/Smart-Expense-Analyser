@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Budgets · SpendSense AI{% endblock %}
+{% block content %}
+<div class="row justify-content-center"><div class="col-lg-9">
+  <div class="d-flex justify-content-between align-items-center mb-4"><div><h1 class="h2 mb-1">Monthly category thresholds</h1><p class="text-muted mb-0">Set the most you want to spend in each category. Leave unused categories blank.</p></div><a class="btn btn-outline-secondary" href="{{ url_for('dashboard') }}">Back</a></div>
+  <div class="card panel-card"><div class="card-body p-4">
+    <form method="post"><div class="row g-3">
+      {% for category in categories %}
+      <div class="col-md-6"><label class="form-label" for="budget-{{ loop.index }}">{{ category }}</label><div class="input-group"><span class="input-group-text">₹</span><input class="form-control" id="budget-{{ loop.index }}" name="{{ category }}" type="number" min="1" step="1" value="{{ budgets.get(category, '') }}" placeholder="No limit"></div></div>
+      {% endfor %}
+    </div><div class="alert alert-light border mt-4 mb-3">Budgets are checked against spending in the current calendar month. The dashboard will show an alert if you overspend and the remaining amount when you are within a limit.</div><button class="btn btn-primary" type="submit">Save thresholds</button></form>
+  </div></div>
+</div></div>
+{% endblock %}

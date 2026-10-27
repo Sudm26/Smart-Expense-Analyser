@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.pyc
+database/*.db
+uploads/*
+!uploads/.gitkeep
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# SQLite sidecars and local database backups
+database/*.db-*
+database/*.sqlite*
+database/*.db.*
+
+# Generated documents, renders, and receipt-evaluation exports
+/output/
+/docx_render/
+/AI_Expense_Analyser_Submission.docx
+/receipt_predictions.csv
+.pytest_cache/
